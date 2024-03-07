@@ -1,6 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
+import { doc, getFirestore, setDoc } from "firebase/firestore";
+
+
 const firebaseConfig = {
     apiKey: "AIzaSyA584DypkdiTzqVqK0I0vGb6x6CRE2__3g",
     authDomain: "nobaber-chat.firebaseapp.com",
@@ -13,3 +17,6 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
+export const storage = getStorage();
+export const db = getFirestore();
+
