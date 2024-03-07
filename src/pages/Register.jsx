@@ -4,14 +4,16 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, storage, db } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { setDoc, doc } from "firebase/firestore";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const displayName = e.target[0].value;
-    console.log(displayName);
     const email = e.target[1].value;
     const password = e.target[2].value;
     const file = e.target[3].files[0];
@@ -44,7 +46,9 @@ const Register = () => {
             photoURL: fileUrl,
           });
 
-          await setDoc(doc(db, "userChats", res.user.uid),{})
+          await setDoc(doc(db, "userChats", res.user.uid), {});
+
+          navigate("/");
         }
       );
     } catch (error) {
@@ -68,7 +72,9 @@ const Register = () => {
           <button>Sign Up</button>
           {error && <span>There was an error!</span>}
         </form>
-        <p>Already have an account? Sign In</p>
+        <p>
+          Already have an account?<Link to="/login">Sign In</Link>
+        </p>
       </div>
     </div>
   );
