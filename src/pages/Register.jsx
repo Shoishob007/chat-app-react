@@ -33,7 +33,6 @@ const Register = () => {
           setError(true);
         },
         async () => {
-          `enter code here`;
           const fileUrl = await getDownloadURL(uploadTask.snapshot.ref);
           await updateProfile(res.user, {
             displayName,
