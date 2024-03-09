@@ -1,21 +1,46 @@
-import React from "react";
+import React, { useContext, useEffect, useRef } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../context/ChatContext";
 
-const Message = () => {
+const Message = ({ message }) => {
+  const { currentUser } = useContext(AuthContext);
+  const { data } = useContext(ChatContext);
+
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  }, [message]);
+
+  const formatTimestamp = (timestamp) => {
+    const date = timestamp.toDate(); // Convert Firebase timestamp to JavaScript Date object
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? "pm" : "am";
+    const formattedHours = hours % 12 || 12; // Convert 24hr format to 12hr format
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    return `${formattedHours}:${formattedMinutes}${ampm}`;
+  };
+
   return (
-    <div className="message owner">
+    <div
+      ref={ref}
+      className={`message ${message.senderId === currentUser.uid && "owner"}`}
+    >
       <div className="messageInfo">
         <img
-          src="https://images.pexels.com/photos/3812757/pexels-photo-3812757.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          src={
+            message.senderId === currentUser.uid
+              ? currentUser.photoURL
+              : data.user.photoURL
+          }
           alt=""
         />
-        <span>Just now</span>
+        <span>{formatTimestamp(message.date)}</span>
       </div>
       <div className="messageContent">
-        <p>Hello</p>{" "}
-        <img
-          src="https://images.pexels.com/photos/3812757/pexels-photo-3812757.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          alt=""
-        />
+        <p>{message.text}</p>
+        {message.image && <img src={message.image} alt="" />}
       </div>
     </div>
   );

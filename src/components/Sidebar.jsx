@@ -9,9 +9,6 @@ const Sidebar = () => {
       <Navbar />
       <Search />
       <ChatList />
-      <ChatList />
-      <ChatList />
-      <ChatList />
     </div>
   );
 };

@@ -13,6 +13,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../context/ChatContext";
 
 const Search = () => {
   const [userName, setUserName] = useState("");
@@ -20,6 +21,7 @@ const Search = () => {
   const [error, SetError] = useState(false);
 
   const { currentUser } = useContext(AuthContext);
+  const { dispatch } = useContext(ChatContext);
 
   const handleSearch = async () => {
     const q = query(
@@ -42,8 +44,11 @@ const Search = () => {
   };
 
   const handleSelect = async () => {
+    dispatch({ type: "CHANGE_USER", payload: user });
+
     //check wether the group (chats in firestore) exists, if not then create one!
 
+    console.log("Clicked");
     const combinedId =
       currentUser.uid > user.uid
         ? currentUser.uid + user.uid
@@ -98,7 +103,7 @@ const Search = () => {
       </div>
       {error && <span>User not found!</span>}
       {user && (
-        <div className="userChat" onClick={handleSelect}>
+        <div className="userChat" onClick={() => handleSelect(user)}>
           <img src={user.photoURL} alt="" />
           <div className="userChatInfo">
             <span>{user.displayName}</span>

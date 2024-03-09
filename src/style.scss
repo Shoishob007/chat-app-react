@@ -262,6 +262,31 @@ body{
                 padding: 10px;
                 height: calc(100% - 160px);
                 overflow-y: scroll;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px 20px;
+
+
+                .groupMessage {
+                    width: 100%;
+                    max-width: 600px;
+                    margin-bottom: 20px;
+
+                    h2 {
+                      align-items: center;
+                      margin: auto;
+                      font-size: 12px; 
+                      font-weight: bold;
+                      color: #2f2d52; 
+                      margin-top: 20px; 
+                      margin-bottom: 10px; 
+                      border-bottom: 1px dotted #2f2d52; 
+                      padding-bottom: 5px; 
+                      text-align: center;
+                      width: 50%;
+                    }
+                  }
 
 
                 .message{
@@ -272,14 +297,20 @@ body{
                     .messageInfo{
                         display: flex;
                         flex-direction: column;
+                        justify-content: center;
                         color: gray;
                         font-weight: 300;
+                        align-items: center;
 
                         img{
                             width: 40px;
                             height: 40px;
                             border-radius: 50%;
                             object-fit: cover;
+                        }
+
+                        span{
+                            font-size: 10px;
                         }
                     }
 
@@ -314,6 +345,8 @@ body{
                                 color: white;
                                 border-radius: 10px 0px 10px 10px;
                              }
+
+                            
 
                         }
 
