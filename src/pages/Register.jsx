@@ -47,7 +47,7 @@ const Register = () => {
 
           await setDoc(doc(db, "userChats", res.user.uid), {});
 
-          navigate("/");
+          navigate("/login");
         }
       );
     } catch (error) {
@@ -72,7 +72,7 @@ const Register = () => {
           {error && <span>There was an error!</span>}
         </form>
         <p>
-          Already have an account?<Link to="/login">Sign In</Link>
+          Already have an account? <Link to="/login">Sign In</Link>
         </p>
       </div>
     </div>

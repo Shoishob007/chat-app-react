@@ -32,7 +32,13 @@ const Login = () => {
           {error && <span>There was an error!</span>}
         </form>
         <p>
-          Don't have any account? <Link to="/register">Sign Up</Link>
+          Don't have any account?{" "}
+          <Link
+            to="/register"
+            // style={{ textDecoration: "none", color: "inherit" }}
+          >
+            Sign Up
+          </Link>
         </p>
       </div>
     </div>
