@@ -48,7 +48,6 @@ const Search = () => {
 
     //check wether the group (chats in firestore) exists, if not then create one!
 
-    console.log("Clicked");
     const combinedId =
       currentUser.uid > user.uid
         ? currentUser.uid + user.uid
@@ -58,7 +57,6 @@ const Search = () => {
       const res = await getDoc(doc(db, "chats", combinedId));
 
       if (!res.exists()) {
-        //create a chat in "chats" collection
         await setDoc(doc(db, "chats", combinedId), { messages: [] });
 
         //create user chats
@@ -103,9 +101,9 @@ const Search = () => {
       </div>
       {error && <span>User not found!</span>}
       {user && (
-        <div className="userChat" onClick={() => handleSelect(user)}>
+        <div className="searchList" onClick={() => handleSelect(user)}>
           <img src={user.photoURL} alt="" />
-          <div className="userChatInfo">
+          <div className="searchListInfo">
             <span>{user.displayName}</span>
           </div>
         </div>
