@@ -19,7 +19,7 @@
 
 body {
     margin: 0;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
 }
 
@@ -155,6 +155,14 @@ body {
                 color: whitesmoke;
                 border-right: 1px solid whitesmoke;
 
+                img {
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    background-color: whitesmoke;
+                    object-fit: cover;
+                }
+
                 .logo {
                     font-weight: bold;
 
@@ -169,39 +177,42 @@ body {
                     align-items: center;
                     gap: 10px;
 
-                    img {
-                        width: 24px;
-                        height: 24px;
-                        border-radius: 50%;
-                        background-color: whitesmoke;
-                        object-fit: cover;
-                    }
-
-                    button {
-                        background-color: #5d5b8d;
-                        color: whitesmoke;
-                        font-size: 12px;
-                        border: none;
-                        border-radius: 5px;
-                        cursor: pointer;
-                        height: 20px;
-
-                        @include tablet {
-                            position: absolute;
-                            bottom: 10px;
-                        }
-
-                        &:hover {
-                            scale: 105%;
-                            background-color: rgb(197, 33, 4);
-                        }
-
-                        transition: 0.2s;
-                    }
-
-                    span {
+                    .identity {
+                        display: flex;
+                        flex-direction: column;
                         align-items: center;
+                        gap: 5px;
+
+                        button {
+                            background-color: #5d5b8d;
+                            color: whitesmoke;
+                            font-size: 10px;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            height: 20px;
+                            max-width: 50px;
+
+                            @include tablet {
+                                position: absolute;
+                                bottom: 10px;
+                            }
+
+                            &:hover {
+                                scale: 105%;
+                                background-color: rgb(197, 33, 4);
+                            }
+
+                            transition: 0.2s;
+                        }
+
+                        span {
+                            align-items: center;
+                        }
+
                     }
+
+
                 }
             }
 
@@ -230,14 +241,14 @@ body {
 
                     padding: 10px;
                     display: flex;
-                    justify-content: space-around;
+                    justify-content: center;
                     align-items: center;
-                    gap: 10px;
+                    gap: 20px;
                     color: white;
 
                     img {
-                        width: 50px;
-                        height: 50px;
+                        width: 40px;
+                        height: 40px;
                         border-radius: 50%;
                         object-fit: cover;
                     }
@@ -273,12 +284,12 @@ body {
 
                     .userChatInfo {
                         span {
-                            font-size: 18px;
+                            font-size: 16px;
                             font-weight: 500;
                         }
 
                         p {
-                            font-size: 12px;
+                            font-size: 10px;
                             color: lightgray;
                             margin: 5px 0px;
                         }
@@ -288,10 +299,10 @@ body {
                 }
 
                 .lastMessage {
-                    font-size: 10px;
+                    font-size: 8px;
                     color: whitesmoke;
-                    padding: 10px 15px;
                     margin-top: 15px;
+                    max-width: 60px;
                 }
 
 

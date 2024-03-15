@@ -12,10 +12,13 @@ const Navbar = () => {
       <span className="logo">Nobaber Chat</span>
       <div className="user">
         <img src={currentUser.photoURL} alt="" />
-        <span>{currentUser.displayName}</span>
-        <button onClick={() => signOut(auth)}>
-          {/* <FaSignOutAlt /> */} Logout
-        </button>
+
+        <div className="identity">
+          <span>{currentUser.displayName}</span>
+          <button onClick={() => signOut(auth)}>
+            {/* <FaSignOutAlt /> */} Logout
+          </button>
+        </div>
       </div>
     </div>
   );
