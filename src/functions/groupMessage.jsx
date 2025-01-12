@@ -2,7 +2,7 @@ const groupMessages = (messages) => {
   const groupedMessages = {};
   messages.forEach((msg) => {
     const msgDate = msg.date.toDate(); // Convert Firebase timestamp to JavaScript Date object
-    const dateKey = msgDate.toDateString(); // Get date string (e.g., "Sat Feb 12 2022")
+    const dateKey = msgDate.toDateString(); 
     if (!groupedMessages[dateKey]) {
       groupedMessages[dateKey] = [];
     }

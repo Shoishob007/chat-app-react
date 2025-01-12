@@ -30,10 +30,13 @@ export const formatTimestampAndDate = (timestamp) => {
       messageDate.getMonth() === yesterday.getMonth() &&
       messageDate.getFullYear() === yesterday.getFullYear()
     ) {
-      return "Yesterday"; // If message date is yesterday, return "Yesterday"
+      return "Yesterday";
     } else {
-      // If message date is not yesterday or today, return the full date string
-      return messageDate.toDateString();
+      return messageDate.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "2-digit",
+      });
     }
   }
 };
